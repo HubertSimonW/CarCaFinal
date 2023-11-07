@@ -34,7 +34,7 @@ class CarController extends Controller
         ]);
 
         Car::create([
-            'name' => $request->title,
+            'name' => $request->name,
             'engine_Size' => "2",
             'car_Image' => "public\images\Tess_the_TickTock_Dog.jpeg",
             'colour' => "Black",

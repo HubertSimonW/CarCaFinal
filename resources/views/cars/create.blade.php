@@ -10,14 +10,14 @@
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                 <form action="{{ route('cars.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <x-text-input
+                     <x-text-input
                         type="text"
                         name="name"
                         field="name"
                         placeholder="Name"
                         class="w-full"
                         autocomplete="off"
-                        :value="@old('name')">
+                        :value="@old('name', $car->name)">
                     </x-text-input>
 
                     <x-text-input
@@ -26,7 +26,7 @@
                         field="engine_Size"
                         placeholder="Engine Size"
                         class="w-full mt-6"
-                        :value="@old('engine_Size')">
+                        :value="@old('engine_Size', $car->engine_Size)">
                     </x-text-input>
 
                     <x-text-input
@@ -36,7 +36,7 @@
                         placeholder="Colour"
                         class="w-full"
                         autocomplete="off"
-                        :value="@old('colour')">
+                        :value="@old('colour', $car->colour)">
                     </x-text-input>
 
                     <x-text-input
@@ -45,7 +45,7 @@
                         field="price"
                         placeholder="Price"
                         class="w-full mt-6"
-                        :value="@old('price')">
+                        :value="@old('price', $car->price)">
                     </x-text-input>
                     <!-- I created a new component called textarea, you will need to do the same to using the x-textarea component -->
                     {{-- <x-textarea
@@ -63,7 +63,7 @@
                         placeholder="Car"
                         class="w-full mt-6"
                         field="car_Image"
-                        :value="@old('car_Image')">>
+                        :value="@old('car_Image', $car->car_Image)">>
                     </x-file-input>
 
                     <x-primary-button class="mt-6">Save Car</x-primary-button>
