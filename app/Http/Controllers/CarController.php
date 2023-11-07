@@ -36,7 +36,7 @@ class CarController extends Controller
         Car::create([
             'name' => $request->name,
             'engine_Size' => "2",
-            'car_Image' => "public\images\Tess_the_TickTock_Dog.jpeg",
+            'car_Image' => "",
             'colour' => "Black",
             'price' => "25500",
             'created_at' => now(),
@@ -121,8 +121,9 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Car $car)
     {
-        //
+        $car->delete();
+        return to_route('cars.index')->with('success','Book deleted successfully');
     }
 }

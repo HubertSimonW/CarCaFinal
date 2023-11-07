@@ -8,9 +8,7 @@
     <!-- Page Content -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <x-alert-success>
-                       {{session('success') }}
-                    </x-alert-success>
+                    
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <table class="table table-hover">
@@ -43,8 +41,14 @@
                         
                         </tbody>
                     </table>
+                      <x-primary-button><a href="{{ route('cars.edit', $car) }}">Edit</a> </x-primary-button>
+                        <form action="{{ route('cars.destroy', $car) }}" method="post">
+                          @method('delete')
+                          @csrf
+                           <x-primary-button onclick="return confirm('You sure you want to delete?')">Delete </x-primary-button>
+                        </form>
                 </div>
-                <x-primary-button><a href="{{ route('cars.edit', $car) }}">Edit</a> </x-primary-button>
+                
             </div>
         </div>
     </div>
