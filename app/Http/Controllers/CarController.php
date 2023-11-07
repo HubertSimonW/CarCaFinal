@@ -60,8 +60,8 @@ class CarController extends Controller
     //     return view('cars.show')->with('car', $car);
     // }
      Public function up(): void
-     {
-           Schema::create('books', function (Blueprint $table) 
+    {
+           Schema::create('cars', function (Blueprint $table) 
         {
             $table->id();
             $table->string('name');
@@ -70,27 +70,52 @@ class CarController extends Controller
             $table->string('price');
             $table->string('car_Image');
 
-             $table->timestamps
+             $table->timestamps();
         });
       
       
 
-     }
+    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Car $car)
     {
-        //
+        return view('cars.edit')->with('car', $car);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Car $car)
     {
-        //
+      $request->validate([
+        'name' => 'required',
+        'engine_Size' => 'required',
+        'colour' => 'required',
+        'price' => 'required',
+        'car_Image' => 'required|image',
+      ]);
+
+      if($request->hasFile('car_Image')) {
+        $image = $request->file('car_Image');
+        $imageName = time() . '.' . $image->extention();
+
+        $image->storeAs('public/cars', $imageName);
+        $car_Image = 'storage/cars/' . $imageName;
+      }
+        
+        $car->update([
+        'name' => $request->name,
+        'engine_Size' => $request->engine_Size,
+        'colour' => $request->colour,
+        'price' => $request->price,
+        'car_Image' => $request->car_image_name,
+        ]);
+    
+        return to_route('cars.show', $car)->with('success','Car updated successfully');
+    
     }
 
     /**

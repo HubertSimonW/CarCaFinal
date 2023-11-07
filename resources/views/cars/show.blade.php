@@ -8,6 +8,9 @@
     <!-- Page Content -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <x-alert-success>
+                       {{session('success') }}
+                    </x-alert-success>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                     <table class="table table-hover">
@@ -19,21 +22,21 @@
                             </td>
                             </tr>
                             <tr>
-                                <td class="font-bold ">Name  </td>
+                                <td class="font-bold ">Name </td>
                                 <td>{{ $car->name }}</td>
                             </tr>
                            
                             <tr>
-                                <td class="font-bold">Engine Size </td>
+                                <td class="font-bold">Engine Size</td>
                                 <td>{{ $car->engine_Size }}</td>
                             </tr>
                             <tr>
-                                <td class="font-bold ">Colour </td>
+                                <td class="font-bold ">Colour</td>
                                 <td>{{ $car->colour }}</td>
                             </tr>
 
                             <tr>
-                                <td class="font-bold ">Price </td>
+                                <td class="font-bold ">Price</td>
                                 <td>{{ $car->price }}</td>
                             </tr>
                         
@@ -41,6 +44,7 @@
                         </tbody>
                     </table>
                 </div>
+                <x-primary-button><a href="{{ route('cars.edit', $car) }}">Edit</a> </x-primary-button>
             </div>
         </div>
     </div>
