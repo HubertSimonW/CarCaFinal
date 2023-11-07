@@ -26,11 +26,20 @@
                     </div>
                 </header>
             @endif
-
+                
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
         </div>
+
+                    <nav>
+                        <ul>
+                          <li><a href="{{ route('cars.index') }}"> All Cars</a></li>
+                          <li><a href="{{ route('cars.create') }}"> Add new Car</a></li>
+                        </ul>
+                    
+                    </nav>
+        
     </body>
 </html>
