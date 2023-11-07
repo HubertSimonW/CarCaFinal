@@ -124,6 +124,6 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         $car->delete();
-        return to_route('cars.index')->with('success','Book deleted successfully');
+        return to_route('cars.index')->with('success','Car deleted successfully');
     }
 }
